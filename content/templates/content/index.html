@@ -1,0 +1,181 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+<div id="home-inside" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div id="home-inside-container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="home-inside-h1"><a href="#">WELCOME</a></div>
+						<div class="home-inside-h3">
+							<p>The APA was established to introduce a new generation to powerboat racing. We race in custom designed and manufactured T750 power boats at venues across the globe.</p>
+							<p>Our circuit racing series sees pilots compete in identical boats on tight inshore circuits across the world. The thrilling and highly competitive spectacle is enjoyed by both veteran and novice pilots.</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div id="home-inside-photos">
+							<img class="img-responsive" src="/static/images/scroll-1.jpg">
+							<img class="img-responsive" src="/static/images/scroll-2.jpg">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>Our Events</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="media-list">
+					{% for event in events %}
+					<div class="media-item">
+							<a href="{% url 'content:championship' event.slug %}" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url({{ event.event_cover.url }});">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><small style="text-transform: uppercase;">{% if event.event_date %}{{ event.event_date|date:"F Y"}}{% else %}{{ event.event_proposed_date }}{% endif %}</small></div>
+										<div><strong style="text-transform: uppercase;">{{ event.event_title }}</strong></div>
+										<div style="text-transform: uppercase;">{% if event.event_date %}{% if event.event_past == true %}See the Results{% else %}Find Out More{% endif %}{% else %}Register Your Interest{% endif %}</div>
+									</div>
+								</div>
+							</a>
+					</div>
+					{% endfor %}							
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;"><span>CHAMPIONSHIP RACERS</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+				    <div class="home-teamslider-container">
+				    	{% for pilot in pilots %}
+					    <div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('{{ pilot.profile_image.url }}');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	{{ pilot.first_name }} {{ pilot.last_name}}			                        	<span class="pull-right flag-icon {{ pilot.get_flag }}"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.nationality.name }}</span></div>
+				                            {% if pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+						{% endfor %}
+							
+					</div>
+				</div>
+			</div>
+	</div>
+	<div id="home-video" class="container-fluid" style="background-image:url('static/images/promo-video.jpg')">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="col-xs-12 home-vip-title">
+				<span>
+					<a id="video-box" href="javascript:void(0);" data-filename="2019_F1H2O_Season_Review" data-videotitle=" - Season End Highlights" data-slug="320--season-end-highlights" data-season="2019">
+						<i class="fa fa-youtube-play"></i> 					<div id="video-player-container" style="display:none"><div id="video-player"></div></div>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><span>TRAINING CENTRES</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="media-list">
+					<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-1.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>EXMOUTH, UK</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>LEVELS: Novice - Advanced</small></div>
+										<div><small>CHIEF INSTRUCTOR: Guy Child</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-2.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>CHANGI, SG</strong><span class="pull-right flag-icon flag-icon-sg"></span></div>
+										<div><small>LEVELS: Novice</small></div>
+										<div><small>CHIEF INSTRUCTOR: Campbell Jenkins</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-3.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>HONG KONG</strong><span class="pull-right flag-icon flag-icon-hk"></span></div>
+										<div><small>LEVELS: Novice - Intermediate</small></div>
+										<div><small>CHIEF INSTRUCTOR: John Lindsay</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% block title %} Championship Racers {% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid page-title">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="row">
+				<h4>
+					CHAMPIONSHIP RACERS</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div> 
+<div id="home-teams" class="container-fluid">
+<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+				    <div class="home-teamslider-container">
+				    	{% for pilot in pilots %}
+					    <div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('{% if pilot.display == True %}{{ pilot.profile_image.url }}{% else %}/static/images/avatar.jpg{% endif %}');min-height: 50em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	{{ pilot.first_name }} {{ pilot.last_name}}			                        	<span class="pull-right flag-icon {{ pilot.get_flag }}"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.nationality.name }}</span></div>
+				                            {% if pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+						{% endfor %}
+							
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock content %}

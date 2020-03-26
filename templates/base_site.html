@@ -1,0 +1,356 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Asia Powerboat Championships | {% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="/static/vendors/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css">
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" type="text/css" media="screen" />
+		{% endblock stylesheets %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+		<div id="social-header" class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+					<div class="col-sm-7 hidden-xs">
+						&nbsp;
+					</div>
+					<div class="col-sm-5 col-xs-12">
+						<span class="hidden-xs">Follow Us</span>
+						<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+						<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+						<a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+						<a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="navbar-container" class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+					<nav id="navbar">
+						<div id="navbar-brand">
+							<a href="/"><img alt="Asia Powerboat Championship" class="img-responsive" style="height: 6em;" src="https://apachampionship.com/apa/wp-content/uploads/2019/11/APA-Logo-600.png"></a>
+						</div>
+						<div id="navbar-menu">
+							<ul class="nav navbar-nav hidden-xs">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CHAMPIONSHIPS <i class="fa fa-caret-down"></i></a>
+									<ul class="dropdown-menu">
+
+										<li><a href="">Mediterranean Tour</a></li>
+										<li><a href="championship.html">Singapore 2019</a></li>
+										<li><a href="#">Macau 2019</a></li>
+										<li><a href="#">Hong Kong 2018</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RACERS <i class="fa fa-caret-down"></i></a>
+									<ul class="dropdown-menu">
+										<li><a href="{% url 'content:championship_standings' %}">Championship Positions</a></li>
+										<li><a href="{% url 'content:championship_racers' %}">Current Racers</a></li>
+										<li><a href="#">Join Us</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">APA RACING <i class="fa fa-caret-down"></i></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">The Race Team</a></li>
+										<li><a href="#">The Pantera</a></li>
+										<li><a href="#">Corporate Events</a></li>
+									</ul>
+								</li>
+								<li><a href="/news">NEWS</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TRAINING <i class="fa fa-caret-down"></i></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Training Centres</a></li>
+										<li><a href="#">Courses Available</a></li>
+										<li><a href="#">Training Material</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DOCUMENTATION <i class="fa fa-caret-down"></i></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">License Applications</a></li>
+										<li><a href="#">APA Rules</a></li>
+										<li><a href="#">APA Policies</a></li>
+										<li><a href="#">Corporate Information</a></li>
+									</ul>
+								</li>
+								<li><a href="#">ABOUT US </a></li>
+								<li><a href="#">CONTACTS</a></li>
+							</ul>
+							<ul id="navbar-mobile" class="nav visible-xs">
+								<li role="presentation" class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										<i class="fa fa-bars fa-3x"></i>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">CHAMPIONSHIPS</a></li>
+										<li><a href="#">RACERS</a></li>
+										<li><a href="#">APA RACING</a></li>
+										<li><a href="#">NEWS</a></li>
+										<li><a href="#">TRAINING</a></li>
+										<li><a href="#">DOCUMENTATION</a></li>
+										<li><a href="#">LICENSES</a></li>
+										<li><a href="#">ABOUT US</a></li>
+										<li><a href="#">CONTACTS</a></li>
+									</ul>
+								</li>	
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+		{% block content %}
+        {% endblock content %}    
+
+
+
+
+
+
+
+<div id="home-vip" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="col-xs-12 home-vip-title">
+				<span style="color:rgb(255,223,0);">ASIA POWERBOAT RACE TEAM</span>
+			</div>
+			<div class="col-xs-12 home-vip-book">
+				<span><a href="#">Discover More <i class="fa fa-angle-double-right"></i></a></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+						<div id="footer-brand" class="pull-left">
+							<img alt="F1H2O UIM World Championship" class="img-responsive" style="height: 10em;" src="https://apachampionship.com/apa/wp-content/uploads/2019/11/APA-Logo-600.png">
+						</div>
+						
+						
+					</div>
+				</div>
+				<div class="row">
+					<div id="footer-bottom" class="col-sm-12 col-lg-10 col-lg-offset-1">
+						<div class="row">
+							<div id="footer-social" class="col-xs-12 col-sm-6 pull-left">
+								<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+								<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+								<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+								<a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+								<a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+							</div>
+							<div class="col-xs-12 col-sm-6 copyright">&copy;2020 Asia Powerboat Championships UK Ltd - All rights reserved</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a id="scrolltotop" href="#" class="hidden-xs"><i class="fa fa-angle-double-up"></i></a>
+		</footer>
+
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script>window.jQuery || document.write('<script src="https://www.f1h2o.com/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+		<script src="https://www.f1h2o.com/js/vendor/bootstrap.min.js"></script>
+		<script src="https://www.f1h2o.com/js/main.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(window).scroll(function() {
+					var scroll = $(window).scrollTop();
+					if (scroll>45) {
+						$('#navbar-container').addClass('shrink');
+						$('#scrolltotop').show();
+					} else {
+						$('#navbar-container').removeClass('shrink');
+						$('#scrolltotop').hide();
+					}
+				});
+			});
+		</script>
+
+						<script src="https://www.f1h2o.com/js/vendor/slick/slick.min.js"></script>
+				<script src="https://www.f1h2o.com/js/vendor/jquery.countdown.min.js"></script>
+				<script src="https://www.f1h2o.com/js/vendor/moment.min.js"></script>
+				<script src="https://www.f1h2o.com/js/vendor/moment-timezone-with-data-2012-2022.min.js"></script>
+				<script src="https://www.f1h2o.com/js/vendor/fancyBox/jquery.fancybox.min.js"></script>
+				<script type="text/javascript" src="https://content.jwplatform.com/libraries/gWrAFko0.js"></script>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('#home-eventslider-container').slick({
+							autoplay: true,
+							autoplaySpeed: 0,
+							arrows: false,
+							cssEase: 'linear',
+							centerMode: true,
+							slidesToShow: 1,
+							speed: 5000,
+							swipe: false,
+							variableWidth: true
+						});
+						$('#home-news-top1').slick({
+							autoplay: true,
+							autoplaySpeed: 6000,
+							arrows: false,
+							slidesToShow: 1,
+							swipe: false,
+							vertical: true
+						}).on('afterChange',function(event,slick,currentSlide) {
+							containerH = $(slick.$slides[currentSlide]).parents('#home-news-top1').height();
+							$(slick.$slides[currentSlide]).outerHeight(containerH);
+						}).on('mouseover',function() {
+							$('#home-news-top2').slick('slickPause');
+						}).on('mouseleave',function() {
+							$('#home-news-top2').slick('slickPlay');
+						});
+						$('#home-news-top2').slick({
+							autoplay: true,
+							autoplaySpeed: 6000,
+							arrows: false,
+							initialSlide: 1,
+							slidesToShow: 2,
+							swipe: false,
+							vertical: true
+						}).on('afterChange',function(event,slick,currentSlide) {
+							$(slick.$slides[currentSlide]).prev().outerHeight(Math.floor(containerH/2.0));
+							$(slick.$slides[currentSlide]).outerHeight(containerH-(Math.floor(containerH/2.0)));
+						}).on('mouseover',function() {
+							$('#home-news-top1').slick('slickPause');
+						}).on('mouseleave',function() {
+							$('#home-news-top1').slick('slickPlay');
+						});
+						$('#home-news-f4s').slick({
+							nextArrow:'<span class="slick-next"><i class="fa fa-chevron-right"></i></span>',
+							prevArrow:'<span class="slick-prev"><i class="fa fa-chevron-left"></i></span>',
+							slidesToShow: 1,
+							swipe: false
+						});
+						$('#home-inside-photos').slick({
+							autoplay: true,
+							autoplaySpeed: 6000,
+							arrows: false,
+							slidesToShow: 1,
+							swipe: false
+						});
+						var finaldate = moment.tz($('#home-cd-rbl').data('countdown'), $('#home-cd-rbl').data('timezone'));
+						$("#home-cd-rbl").countdown(finaldate.toDate(), function(event) {
+							var $this = $(this).html(event.strftime(''
+								+ '<div class="time"><span class="count">%-D</span><span class="label">day%!D</span></div>'
+								+ '<div class="time"><span class="count">%-H</span><span class="label">hour%!H</span></div>'
+								+ '<div class="time"><span class="count">%-M</span><span class="label">minute%!M</span></div>'
+								+ '<div class="time"><span class="count">%-S</span><span class="label">second%!S</span></div>'
+							)).on('finish.countdown', function() {
+								location.reload(true);
+							});
+						});
+						if ($("#home-live-cd-rbl").length) {
+							var finaldatelive = moment.tz($('#home-live-cd-rbl').data('countdown'), $('#home-live-cd-rbl').data('timezone'));
+							$("#home-live-cd-rbl").countdown(finaldatelive.toDate(), function(event) {
+								var $this = $(this).html(event.strftime(''
+									+ '<div class="time"><span class="count">%-D</span><span class="label">day%!D</span></div>'
+									+ '<div class="time"><span class="count">%-H</span><span class="label">hour%!H</span></div>'
+									+ '<div class="time"><span class="count">%-M</span><span class="label">minute%!M</span></div>'
+									+ '<div class="time"><span class="count">%-S</span><span class="label">second%!S</span></div>'
+								)).on('finish.countdown', function() {
+									location.reload(true);
+								});
+							});
+						}
+						$('.home-teamslider-container').slick({
+								nextArrow:'<span class="slick-next"><i class="fa fa-chevron-right"></i></span>',
+								prevArrow:'<span class="slick-prev"><i class="fa fa-chevron-left"></i></span>',
+								slidesToShow: 1,
+								swipe: false
+							});
+						
+						$('a[data-toggle="tab"]').on('hidden.bs.tab', function (e) {
+							var target = $(e.target).attr("href");
+							$('#'+target.substr(1)).find('.home-teamslider-container').slick('unslick');
+						})
+						$('#home-teams ul>li:first>a').click();
+						$('#drivers-standings').load('/ajax/std-drivers.php?season=2019&idsubclass=1&top=10');
+						$('#video-box').on('click',function(e) {
+							var filename = $(this).data('filename')+'.mp4';
+							var videotitle = $(this).data('videotitle');
+							var videoslug = $(this).data('slug');
+							var season = $(this).data('season');
+							$.fancybox.open({
+								src: '#video-player-container',
+								type: 'inline',
+								opts:
+									{
+									smallBtn : false,
+									afterShow: function(instance,slide) {
+										var playerInstance = jwplayer("video-player");
+										playerInstance.setup({
+											file: "https://www.youtube.com/watch?v=-XR9Shhuutg"
+										});
+									},
+									afterClose: function() {
+										//var myPlayer = WowzaPlayer.get('video-player');
+										//if (myPlayer != null) {
+										//	myPlayer.destroy();
+										//}
+									}
+								}
+							})
+						});
+						$('#timetable-modal').on('show.bs.modal', function (event) {
+							var button = $(event.relatedTarget);
+						 	var idevent = button.data('idevent');
+						 	var eventtitle = button.data('eventtitle');
+						  	var modal = $(this);
+						  	modal.find('.modal-title').text(eventtitle+' - TIMETABLE');
+						  	modal.find('.modal-body').load('/ajax/timetable.php?idevent='+idevent);
+						});
+					});
+				</script>
+				
+		<script>
+		    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+		    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+		    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+		    e.src='//www.google-analytics.com/analytics.js';
+		    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+		    ga('create','UA-70860658-1','auto');ga('send','pageview');
+		</script>
+    </body>
+</html>
