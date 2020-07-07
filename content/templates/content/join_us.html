@@ -1,0 +1,100 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% load countries %}
+{% block title %} Contact Us {% endblock title %}
+
+{% block content %}
+{% get_countries as countries %}
+<div class="container-fluid page-title">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="row">
+				<h4>
+					JOIN THE APA</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div> 
+<div class="container-fluid page-content">
+    <div class="row">
+        <div class="col-sm-12 col-lg-10 col-lg-offset-1">
+            <div class="contacts-item">
+                <div class="col-xs-12">
+                	<div class="contacts-title">JOIN THE APA</div>
+                    <p class="contacts-text">Please complete the form below to join the Asia Powerboat Association:</p>
+                    <div class="col-xs-12 join-form">
+	                    <form action="#" method="POST" class="form-horizontal">
+	                    	{% csrf_token %}
+							<div class="form-group">
+								<label for="name" class="col-sm-2 control-label">First Name*</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="name" name="name"  required>
+								</div>
+								<label for="name" class="col-sm-2 control-label">Last Name*</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="name" name="name"  required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="email" class="col-sm-3 control-label">E-mail*</label>
+								<div class="col-sm-9">
+									<input type="email" class="form-control" id="email" name="email"  required>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="company" class="col-sm-3 control-label">Telephone*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="company" name="company" required>
+								</div>
+							</div>
+		                    
+							<div class="form-group">
+								<label for="request" class="col-sm-3 control-label">Address</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="company" name="company">
+									<input type="text" class="form-control" id="company" name="company">
+									<input type="text" class="form-control" id="company" name="company">
+									<input type="text" class="form-control" id="company" name="company">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="request" class="col-sm-3 control-label">Country*</label>
+								<div class="col-sm-9">
+									<select id="mySelect">
+											<option>-</option>
+										{% for country in countries %}
+    										<option value="{{ country.code }}">{{ country.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							<div align="center">
+								<div id="paypal-button-container"></div>
+							</div>
+
+							
+						</form>
+					</div>
+														</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super}}
+  <script>
+  $(document).ready(function(){
+  	console.log('Hello')
+  	$("#membership-select").change(function () {
+  		console.log('Hello')
+  	});
+  });
+  </script>
+  
+
+{% endblock javascripts %}

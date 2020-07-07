@@ -1,0 +1,248 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% block title %} Training Centres {% endblock title %}
+{% block stylesheets %}
+  {{ block.super }}
+  <style>
+    .insidef1h2o-item {
+	display: flex;
+	flex-wrap:wrap;
+	background-color:white;
+}
+
+.insidef1h2o-item-photo {
+	display: flex;
+	flex-wrap:wrap;
+	background:center center;
+	background-size:cover;
+	min-height:120px;
+}
+
+.insidef1h2o-item>.insidef1h2o-title {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:100px;
+	padding-bottom:80px;
+	width: 40%;
+	font-size:3.0em;
+	font-weight:700;
+	text-transform:uppercase;
+	text-align:right;
+	line-height:1.0em;
+}
+
+.insidef1h2o-item>.insidef1h2o-text {
+	padding:15px 100px 60px;
+	padding-top:110px;
+	width: 60%;
+	font-size:0.8em;
+}
+
+.insidef1h2o-item>.insidef1h2o-title2 {
+	padding:100px 100px 50px 100px;
+	font-size:1.4em;
+	font-weight:700;
+	text-transform:uppercase;
+}
+
+.insidef1h2o-item>.insidef1h2o-text2 {
+	font-size:0.8em;
+	padding:80px 80px 80px 80px;
+}
+
+.insidef1h2o-title-white {
+	padding:150px 150px 50px 150px;
+	font-size:1.6em;
+	font-weight:700;
+	text-transform:uppercase;
+	color:white;
+	text-align:center;
+	width:100%;
+}
+
+.insidef1h2o-text-white {
+	padding:0px 150px 150px 150px;
+	font-size:1.1em;
+	font-style:italic;
+	color:white;
+	text-align:center;
+}
+p a {
+	text-decoration:underline;
+}
+
+@media (max-width: 767px) {
+	.insidef1h2o-item>.insidef1h2o-title {
+		width: 100%;
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text {
+		width: 100%;
+		padding:15px;
+	}
+
+	.insidef1h2o-item>.insidef1h2o-title2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-title-white {
+		padding:15px;
+	}
+	
+	.insidef1h2o-text-white {
+		padding:15px;
+	}
+}
+</style>
+{% endblock stylesheets %}
+{% block content %}
+
+<div class="container-fluid page-title">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="row">
+				<h4>
+					OUR TRAINING CENTRES<span class="pull-right flag-icon flag-icon-gb"></span>&nbsp;<span class="pull-right flag-icon flag-icon-hk"></span>&nbsp;<span class="pull-right flag-icon flag-icon-sg"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	</div> 
+	<div id="home-teams" class="container-fluid page-content">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<ul class="nav nav-tabs nav-justified" role="tablist">
+				<li role="presentation" class="active"><a href="#WhatisF1H2O" aria-controls="WhatisF1H2O" role="tab" data-toggle="tab">Exmouth<span class="pull-right flag-icon flag-icon-gb"></span></a></li>
+				<li role="presentation"><a href="#TheChampionship" aria-controls="TheChampionship" role="tab" data-toggle="tab">Hong Kong<span class="pull-right flag-icon flag-icon-hk"></span></a></li>
+				<li role="presentation"><a href="#Powerboats" aria-controls="Powerboats" role="tab" data-toggle="tab">Changi <span class="pull-right flag-icon flag-icon-sg"></span></a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="WhatisF1H2O" style="padding:0;">
+					<div class="insidef1h2o-item-photo" style="background-image:url('/static/images/training_uk.jpg');">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+					<div class="insidef1h2o-item">
+                        <!--<div class="insidef1h2o-title">What<br />is<br />F1H2O?</div>-->
+                        <div class="insidef1h2o-text2">
+                       {% autoescape off %}{{ event.event_description }}{% endautoescape %}
+                        </div>
+                    </div>
+                    
+                    
+				</div>
+				<div role="tabpanel" class="tab-pane" id="TheChampionship" style="padding:0;">
+					<div class="insidef1h2o-item-photo" style="background-image:url('/static/images/training_hk.jpg');">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+					<div class="insidef1h2o-item">
+                        <!--<div class="insidef1h2o-title">What<br />is<br />F1H2O?</div>-->
+                        <div class="insidef1h2o-text2">
+                       {% autoescape off %}{{ event.event_description }}{% endautoescape %}
+                        </div>
+                    </div>
+							
+				</div>
+                    
+				
+
+				<div role="tabpanel" class="tab-pane" id="Powerboats" style="padding:0;">
+					<div class="insidef1h2o-item-photo" style="background-image:url('/static/images/training_sg.jpg');">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+					<div class="insidef1h2o-item">
+
+                        <div class="visible-print-block text-center std-title">&nbsp;</div>
+									<table class="table table-condensed table-standings">
+										<thead>
+											<tr>
+												<th class="std-pos">POS</th>
+												<th class="std-flag">DRIVER</th>
+												<th class="std-flag">NAT</th>
+												<th class="std-boat">BOAT</th>
+												{% for race in event.races %}
+													<th class="std-laps">R{{ race.race_number}}</th>
+												{% endfor %}
+												<th class="std-laps">TOTAL</th>
+										</thead>
+										<tbody>
+											{% for comp in competitors %}
+											<tr>
+												<td class="std-pos"><span>{{ comp.final_position }}</span></td>
+												<td class="std-flag" style="text-transform: uppercase;">{{ comp.entrant.first_name }} {{ comp.entrant.last_name }}</span></td>
+												<td class="std-flag"><span class="flag-icon {{comp.entrant.get_flag}}"></span></td>
+												<td class="std-boat">{% if comp.boat.boat_number == 0 %}-{% else %}{{ comp.boat.boat_number }}{% endif %}</td>
+												{% for race in event.races %}
+													<td class="std-laps">{% get_driver_result event.id comp.entrant.id race.race_number %}</td>
+												{% endfor %}
+												<td class="std-points"><span>{{ comp.final_points }}</span></td>
+											</tr>
+											{% endfor %}
+											
+										</tbody>
+									</table>
+
+                    </div>
+                    
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="Gallery" style="padding:0;">
+					
+					<div class="insidef1h2o-item">
+
+                        <div class="row">
+				<div class="media-list">
+											<div class="media-item media-1">
+							<a data-fancybox="group" href="/img/photos/244/1/F1H2O_Sharjah_Simon_20191221_0623.jpg" data-caption="UIM F1H2O World Championship - Grand Prix of Sharjah - Sharjah UAE - December 19 to 21 , 2019 - Race Day
+Photo:Simon Palfrader© - Editorial use only" data-image="F1H2O_Sharjah_Simon_20191221_0623">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url('/static/images/sing-results.png');"></div>
+								</div>
+							</a>
+													</div>
+												</div>
+					</div>
+                    </div>
+                    <div class="insidef1h2o-item-photo" style="background-image:url('/static/images/sing-results.png');">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white"></div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+{% if event.sponsors.all.count > 0 %}
+	<div id="home-sponsors" class="container-fluid">
+			<div class="row">
+				<h1 style="text-align: center; color: white; text-transform: uppercase;">Our Kind Sponsors</h1>
+				<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+					<div class="row">
+						<div class="sponsors-list">
+							{% for spon in event.sponsors.all %}
+								<div class="sponsors-item"><a href="#" target="_blank"><img class="img-responsive" src="{{ spon.logo.url }}"></a></div>
+							{% endfor %}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endif %}
+
+{% endblock %}

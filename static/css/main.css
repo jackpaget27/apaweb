@@ -302,8 +302,8 @@ th.std-gap, td.std-gap {
 }
 
 #navbar-menu>ul>li>ul.dropdown-menu {
-	min-width:100%;
-	width:100%;
+	min-width:auto !important;
+	width:auto !important;
 	border:0 !important;
 	border-radius:0 !important;
 	border-top:8px rgb(243,29,18) solid !important;
@@ -1426,9 +1426,11 @@ a.btn-green {
 	background-color:lightgrey;
 }
 
-.contacts-item>.contacts-info,
+.contacts-item>.contacts-info{
+	width: 30%;
+}
 .contacts-item>.contacts-form {
-	width: 50%;
+	width: 70%;
 }
 
 .contacts-title {
@@ -1452,8 +1454,8 @@ a.btn-green {
 }
 
 .contacts-item .form-group {
-	color:white;
-	background-color:lightgrey;
+	color:yellow;
+	background-color:red;
 	border:none;
 	padding:10px;
 }
@@ -1467,6 +1469,38 @@ a.btn-green {
 .contacts-form textarea {
 	background-color:white;
 	border:none;
+	border-radius: 0px;
+}
+
+.join-form input,
+.join-form textarea {
+	background-color:white;
+	border:none;
+	border-radius: 0px;
+}
+
+select:not([multiple]) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-position: right 50%;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1"><path d="M4 8L0 4h8z"/></svg>');
+    padding: .5em;
+    padding-right: 1.5em
+}
+
+#mySelect {
+    border-radius: 0;
+    color:#292929;
+    border: 0px;
+    width: 100%;
+}
+
+#membership-select {
+    border-radius: 0;
+    color:#292929;
+    border: 0px;
+    width: 100%;
 }
 
 .contacts-item.inverse .contacts-form input,

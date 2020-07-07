@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'events',
     'content',
     'template_tags',
+    'django_countries',
+    'paypal.standard.ipn',
+    'django.contrib.gis',
+    'django_instagram',
 
 ]
 
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -69,6 +74,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'website.context_processor.get_location',
+                'website.context_processor.get_championships',
             ],
         'libraries':{
             'template_tags': 'template_tags.template_tags',
@@ -139,3 +146,14 @@ STATICFILES_DIRS = (
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+PAYPAL_RECEIVER_EMAIL = 'sb-l9ddt1427672@business.example.com'
+ 
+PAYPAL_TEST = True
+
+GEOIP_LOCATION_MODEL = 'content.models.MyCustomLocation'
+
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
+
+#AUTH_USER_MODEL = "pilots.User" 

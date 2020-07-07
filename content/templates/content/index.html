@@ -1,5 +1,9 @@
 {% extends "base_site.html" %}
 {% load humanize %}
+{% load template_tags %}
+{% load instagram_client %}
+
+
 {% block title %} Home {% endblock title %}
 
 {% block content %}
@@ -13,7 +17,17 @@
 						<div class="home-inside-h1"><a href="#">WELCOME</a></div>
 						<div class="home-inside-h3">
 							<p>The APA was established to introduce a new generation to powerboat racing. We race in custom designed and manufactured T750 power boats at venues across the globe.</p>
-							<p>Our circuit racing series sees pilots compete in identical boats on tight inshore circuits across the world. The thrilling and highly competitive spectacle is enjoyed by both veteran and novice pilots.</p>
+							<p>Our circuit racing series sees pilots compete in identical boats owned and maintained by the APA on tight inshore circuits across the world. The thrilling and highly competitive spectacle is enjoyed by both veteran and novice pilots.</p>
+{% instagram_user_recent_media instagram_profile_name %}
+    {% for media in recent_media %}
+        <div class="django_instagram_media_wall_item">
+            <a href="//instagram.com/p/{{ media.shortcode }}" target="_blank">
+                <img src="{{ media.thumbnail_src }}"/>
+                <span>{{ media.edge_media_to_caption.edges.0.node.text }}</span>
+            </a>
+        </div>
+    {% endfor %}
+
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -31,7 +45,7 @@
 <div class="container-fluid event-gallery">
 	<div class="row">
 		<div class="row">
-				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>Our Events</span></div>
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>Upcoming Events</span></div>
 			</div>
 		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
 
@@ -61,7 +75,7 @@
 
 <div id="home-teams" class="container-fluid">
 	<div class="row">
-		<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;"><span>CHAMPIONSHIP RACERS</span></div>
+		<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;"><span>RACERS</span></div>
 	</div>
 	<div class="row">
 		
@@ -92,14 +106,14 @@
 				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
 				                        </div>
 				                        <div class="driver-icon pull-left">
-				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        	<i class="fa fa-trophy" style="{% get_championship_colour championship.id pilot.id %}"></i>
 				                        </div>
 				                        <div class="driver-championship pull-left">
-				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
-				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
-				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
-				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
-				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                        	<div class="driver-championship-text">POSITION: <span>{% get_championship_position championship.id pilot.id %}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% get_championship_points championship.id pilot.id %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{% get_championship_entered championship.id pilot.id %}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% get_championship_best championship.id pilot.id %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{% get_championship_podiums championship.id pilot.id %}</span></div>
 				                            
 				                        </div>
 				                    </div>
@@ -124,6 +138,36 @@
 		</div>
 	</div>
 	</div>
+	<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>{{ championship.name }}</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="media-list">
+					{% for event in champ_events %}
+					<div class="media-item-training">
+							<a href="{% url 'content:championship' event.slug %}" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url({{ event.event_cover.url }});">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><small style="text-transform: uppercase;">{% if event.event_date %}{{ event.event_date|date:"F Y"}}{% else %}{{ event.event_proposed_date }}{% endif %}</small></div>
+										<div><strong style="text-transform: uppercase;">{{ event.event_title }}</strong></div>
+										<div style="text-transform: uppercase;">{% if event.event_date %}{% if event.event_past == true %}See the Results{% else %}Find Out More{% endif %}{% else %}Register Your Interest{% endif %}</div>
+									</div>
+								</div>
+							</a>
+					</div>
+					{% endfor %}							
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 	<div id="home-teams" class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><span>TRAINING CENTRES</span></div>

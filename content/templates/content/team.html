@@ -1,0 +1,435 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% block title %} Home {% endblock title %}
+{% block stylesheets %}
+  {{ block.super }}
+  <style>
+    .insidef1h2o-item {
+	display: flex;
+	flex-wrap:wrap;
+	background-color:white;
+}
+
+.insidef1h2o-item-photo {
+	display: flex;
+	flex-wrap:wrap;
+	background:center center;
+	background-size:cover;
+	min-height:120px;
+}
+
+.insidef1h2o-item>.insidef1h2o-title {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:100px;
+	padding-bottom:80px;
+	width: 40%;
+	font-size:3.0em;
+	font-weight:700;
+	text-transform:uppercase;
+	text-align:right;
+	line-height:1.0em;
+}
+
+.insidef1h2o-item>.insidef1h2o-text {
+	padding:15px 100px 60px;
+	padding-top:110px;
+	width: 60%;
+	font-size:0.8em;
+}
+
+.insidef1h2o-item>.insidef1h2o-title2 {
+	padding:100px 100px 50px 100px;
+	font-size:1.4em;
+	font-weight:700;
+	text-transform:uppercase;
+}
+
+.insidef1h2o-item>.insidef1h2o-text2 {
+	font-size:0.8em;
+	padding:80px 80px 80px 80px;
+}
+
+.insidef1h2o-title-white {
+	padding:150px 150px 50px 150px;
+	font-size:1.6em;
+	font-weight:700;
+	text-transform:uppercase;
+	color:white;
+	text-align:center;
+	width:100%;
+}
+
+.insidef1h2o-text-white {
+	padding:0px 150px 150px 150px;
+	font-size:1.1em;
+	font-style:italic;
+	color:white;
+	text-align:center;
+}
+p a {
+	text-decoration:underline;
+}
+
+@media (max-width: 767px) {
+	.insidef1h2o-item>.insidef1h2o-title {
+		width: 100%;
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text {
+		width: 100%;
+		padding:15px;
+	}
+
+	.insidef1h2o-item>.insidef1h2o-title2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-title-white {
+		padding:15px;
+	}
+	
+	.insidef1h2o-text-white {
+		padding:15px;
+	}
+}
+</style>
+{% endblock stylesheets %}
+{% block content %}
+
+<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>APA Racing</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="WhatisF1H2O" style="padding:0;">
+					<div class="insidef1h2o-item-photo" style="background-image:url(/static/images/odr2.jpg);">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">MARATHON RACING</div>
+                        <div class="insidef1h2o-text">
+                        <p>The APA race team compete in marathon events in their 41ft Pantera boat powered by two 1025 HP Mercury Racing engines. APA founder Martin Lai mans the throttles whilst rising powerboat talent Charlotte Camsey steers the boat. This year the team has been joined by Tom Williams-Hawke who will navigate on the gruelling offshore courses. The challenges of offshore racing are very different to those of inshore circuit racing. APA engineer Mark Tribe takes care of the team's equipment and organises the logistics as they move the boat from event to event.</p>
+                        <p>The team race around the UK and a list of upcoming events can be found at the bottom of this page. The legendary Pantera makes an impression in any marina, if you spot it then please go and say hello to the team. They are always keen to talk about the APA, powerboats or life in general.</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item-photo" style="background-image:url(/static/images/circuit-racing.jpg);">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">CIRCUIT RACING</div>
+                        <div class="insidef1h2o-text">
+                        <p>The APA races on inshore circuits across Asia in their custom built Shakespeare boats with 50 HP Tohatsu engines. As part of the APA race team APA talent Charlotte Camsey races in other circuit racing events. This year she is competing in one of our boats in the GT Monohull Light category of the UK Circuit Racing Association Championships (CPA). Charlotte races in an APA Shakespeare hull with a 70 HP Yamaha engine. As well as the CPA Charlotte races in local events in the South West, and international events across Europe.</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item-photo" style="background-image:url(/static/images/circuit-racing.jpg);">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">CLASS 3J OFFSHORE RACING</div>
+                        <div class="insidef1h2o-text">
+                        <p>The APA races on inshore circuits across Asia in their custom built Shakespeare boats with 50 HP Tohatsu engines. As part of the APA race team APA talent Charlotte Camsey races in other circuit racing events. This year she is competing in one of our boats in the GT Monohull Light category of the UK Circuit Racing Association Championships (CPA). Charlotte races in an APA Shakespeare hull with a 70 HP Yamaha engine. As well as the CPA Charlotte races in local events in the South West, and international events across Europe.</p>
+                        </div>
+                    </div>
+					
+                    
+                    
+				</div>
+			</div>
+		
+	</div>
+</div>
+</div>
+
+<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;"><span>THE TEAM</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+				    <div class="home-teamslider-container">
+				    	
+					    <div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('/static/images/martin.jpg');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	MARTIN LAI - THROTTLES			                        	<span class="pull-right flag-icon flag-icon-hk"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.nationality.name }}</span></div>
+				                            {% if pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+						
+						<div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('/static/images/Camsey.png');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	CHARLOTTE CAMSEY - DRIVER		                        	<span class="pull-right flag-icon flag-icon-gb"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.nationality.name }}</span></div>
+				                            {% if pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+
+						<div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('/static/images/tom.jpg');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	TOM WILLIAMS-HAWKE - NAVIGATOR		                        	<span class="pull-right flag-icon flag-icon-gb"></span>
+				                        </h3>
+				                        <div class="driver-info">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.nationality.name }}</span></div>
+				                            {% if pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+
+						<div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('/static/images/mark.jpg');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	MARK TRIBE - ENGINEER		                        	<span class="pull-right flag-icon flag-icon-gb"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.nationality.name }}</span></div>
+				                            {% if pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% if pilot.total_points %}{{ pilot.total_points }}{% else %}0{% endif %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{{ pilot.championships_entered }}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% if pilot.best_position %}{{ pilot.best_position|ordinal }}{% else %}N/A{% endif %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{{ pilot.driver_podiums }}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+
+							
+					</div>
+				</div>
+			</div>
+	</div>
+	<div id="home-video" class="container-fluid" style="background-image:url('static/images/promo-video.jpg')">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="col-xs-12 home-vip-title">
+				<span>
+					<a id="video-box" href="javascript:void(0);" data-filename="2019_F1H2O_Season_Review" data-videotitle=" - Season End Highlights" data-slug="320--season-end-highlights" data-season="2019">
+						<i class="fa fa-youtube-play"></i> 					<div id="video-player-container" style="display:none"><div id="video-player"></div></div>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><span>UPCOMING RACES</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="media-list">
+				<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(/static/images/Unknown.jpeg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>UKOPRA POOLE 100</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>POOLE, UK</small></div>
+										<div><small>June 13 2020</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+					<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(/static/images/UIM.jpeg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>UIM WORLD CHAMPIONSHIPS</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>CORK, IRELAND</small></div>
+										<div><small>POSTPONED</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(/static/images/Unknown-1.jpeg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>COWES TORQUAY COWES</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>COWES UK</small></div>
+										<div><small>August 2020</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(/static/images/Unknown.jpeg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>UKOPRA GUERNSEY GOLD CUP</strong><span class="pull-right flag-icon flag-icon-gg"></span></div>
+										<div><small>GUERNSEY, GUERNSEY</small></div>
+										<div><small>July 2020</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(/static/images/Unknown.jpeg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>UKOPRA SOUTH COAST PURSUIT</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>LITTLEHAMPTON, UK</small></div>
+										<div><small>August 2020</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(/static/images/CPA.png);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>UK CIRCUIT RACING SERIES</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>UK</small></div>
+										<div><small>May - September 2020</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

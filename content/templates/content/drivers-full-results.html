@@ -1,0 +1,170 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% block title %} Racer's Standings {% endblock title %}
+{% block stylesheets %}
+	{{ block.super }}
+  <style>
+    .insidef1h2o-item {
+	display: flex;
+	flex-wrap:wrap;
+	background-color:white;
+}
+
+.insidef1h2o-item-photo {
+	display: flex;
+	flex-wrap:wrap;
+	background:center center;
+	background-size:cover;
+	min-height:120px;
+}
+
+.insidef1h2o-item>.insidef1h2o-title {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:100px;
+	padding-bottom:80px;
+	width: 40%;
+	font-size:3.0em;
+	font-weight:700;
+	text-transform:uppercase;
+	text-align:right;
+	line-height:1.0em;
+}
+
+.insidef1h2o-item>.insidef1h2o-text {
+	padding:15px 100px 60px;
+	padding-top:110px;
+	width: 60%;
+	font-size:0.8em;
+}
+
+.insidef1h2o-item>.insidef1h2o-title2 {
+	padding:100px 100px 50px 100px;
+	font-size:1.4em;
+	font-weight:700;
+	text-transform:uppercase;
+}
+
+.insidef1h2o-item>.insidef1h2o-text2 {
+	font-size:0.8em;
+	padding:80px 80px 80px 80px;
+}
+
+.insidef1h2o-title-white {
+	padding:150px 150px 50px 150px;
+	font-size:1.6em;
+	font-weight:700;
+	text-transform:uppercase;
+	color:white;
+	text-align:center;
+	width:100%;
+}
+
+.insidef1h2o-text-white {
+	padding:0px 150px 150px 150px;
+	font-size:1.1em;
+	font-style:italic;
+	color:white;
+	text-align:center;
+}
+p a {
+	text-decoration:underline;
+}
+
+@media (max-width: 767px) {
+	.insidef1h2o-item>.insidef1h2o-title {
+		width: 100%;
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text {
+		width: 100%;
+		padding:15px;
+	}
+
+	.insidef1h2o-item>.insidef1h2o-title2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-title-white {
+		padding:15px;
+	}
+	
+	.insidef1h2o-text-white {
+		padding:15px;
+	}
+}
+</style>
+{% endblock stylesheets %}
+{% block content %}
+<div id="home-teams" class="container-fluid page-content">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+<div role="tabpanel" class="tab-pane" id="Powerboats" style="padding:0;">
+<div class="insidef1h2o-item-photo" style="background-image:url('/static/images/sing-results.png');">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+					<div class="insidef1h2o-item">
+
+                        <div class="visible-print-block text-center std-title">&nbsp;</div>
+									<table class="table table-condensed table-standings">
+										<thead>
+											<tr>
+												<th class="std-pos" rowspan="2">POS</th>
+												<th class="std-flag" rowspan="2">DRIVER</th>
+												<th class="std-flag" rowspan="2">NAT</th>
+												{% for event in events %}
+													<th class="std-flag" colspan="{{ event.races.all.count }}"><span class="flag-icon {{event.get_flag}}"></span>&nbsp;{{ event.event_title }}</th>
+												{% endfor %}
+												<th class="std-laps" rowspan="2">TOTAL</th>
+											</tr>
+											<tr>
+												{% for event in events %}
+													{% for race in event.races.all %}
+														<th class="std-flag">R{{ race.race_number }}</span></th>
+													{% endfor %}
+												{% endfor %}
+											</tr>
+										</thead>
+										<tbody>
+											{% for comp in pilots %}
+											<tr>
+												<td class="std-pos"><span>{% if comp.championship_position %}{{ comp.championship_position }}{% else %}-{% endif %}</span></td>
+												<td class="std-flag" style="text-transform: uppercase;">{{ comp.first_name }} {{ comp.last_name }}</span></td>
+												<td class="std-flag"><span class="flag-icon {{comp.get_flag}}"></span></td>
+												{% for event in events %}
+													{% for race in event.races.all %}
+														<td class="std-laps">{% get_driver_race event.id comp.id race.race_number %}</td>
+													{% endfor %}
+												{% endfor %}
+												<td class="std-points"><span>{% if comp.total_points == 0 %}-{% else %}{{ comp.total_points }}{% endif %}</span></td>
+											</tr>
+											{% endfor %}
+											
+										</tbody>
+									</table>
+
+									<!-- Full Results Button -->
+									<div id="home-teams" class="container-fluid" style="background-color: white;">
+										<div class="row">
+											<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><a href="{% url 'content:championship_standings' %}"><span>SEE ABRIDGED RESULTS</span></a></div>
+										</div>
+									</div>
+									<!-- End -->
+
+                    </div>
+                    
+				</div>
+				</div>
+			</div>
+</div>
+
+{% endblock content %}

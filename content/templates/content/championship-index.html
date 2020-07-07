@@ -1,0 +1,240 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% block title %} {{ championship.name }} {% endblock title %}
+{% block stylesheets %}
+	{{ block.super }}
+  <style>
+    .insidef1h2o-item {
+	display: flex;
+	flex-wrap:wrap;
+	background-color:white;
+}
+
+.insidef1h2o-item-photo {
+	display: flex;
+	flex-wrap:wrap;
+	background:center center;
+	background-size:cover;
+	min-height:120px;
+}
+
+.insidef1h2o-item>.insidef1h2o-title {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:100px;
+	padding-bottom:80px;
+	width: 40%;
+	font-size:3.0em;
+	font-weight:700;
+	text-transform:uppercase;
+	text-align:right;
+	line-height:1.0em;
+}
+
+.insidef1h2o-item>.insidef1h2o-text {
+	padding:15px 100px 60px;
+	padding-top:110px;
+	width: 60%;
+	font-size:0.8em;
+}
+
+.insidef1h2o-item>.insidef1h2o-title2 {
+	padding:100px 100px 50px 100px;
+	font-size:1.4em;
+	font-weight:700;
+	text-transform:uppercase;
+}
+
+.insidef1h2o-item>.insidef1h2o-text2 {
+	font-size:0.8em;
+	padding:80px 80px 80px 80px;
+}
+
+.insidef1h2o-title-white {
+	padding:150px 150px 50px 150px;
+	font-size:1.6em;
+	font-weight:700;
+	text-transform:uppercase;
+	color:white;
+	text-align:center;
+	width:100%;
+}
+
+.insidef1h2o-text-white {
+	padding:0px 150px 150px 150px;
+	font-size:1.1em;
+	font-style:italic;
+	color:white;
+	text-align:center;
+}
+p a {
+	text-decoration:underline;
+}
+
+@media (max-width: 767px) {
+	.insidef1h2o-item>.insidef1h2o-title {
+		width: 100%;
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text {
+		width: 100%;
+		padding:15px;
+	}
+
+	.insidef1h2o-item>.insidef1h2o-title2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-title-white {
+		padding:15px;
+	}
+	
+	.insidef1h2o-text-white {
+		padding:15px;
+	}
+}
+</style>
+{% endblock stylesheets %}
+{% block content %}
+
+<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>{{ championship.name }} Events</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="media-list">
+					{% for event in championship.events.all %}
+					<div class="media-item">
+							<a href="{% url 'content:championship' event.slug %}" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url({{ event.event_cover.url }});">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><small style="text-transform: uppercase;">{% if event.event_date %}{{ event.event_date|date:"F Y"}}{% else %}{{ event.event_proposed_date }}{% endif %}</small></div>
+										<div><strong style="text-transform: uppercase;">{{ event.event_title }}</strong></div>
+										<div style="text-transform: uppercase;">{% if event.event_date %}{% if event.event_past == true %}See the Results{% else %}Find Out More{% endif %}{% else %}Register Your Interest{% endif %}</div>
+									</div>
+								</div>
+							</a>
+					</div>
+					{% endfor %}							
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% if championship_standings.all %}
+<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important; text-transform: uppercase;"><span>{{ championship.name }} RACERS</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+				    <div class="home-teamslider-container">
+				    	{% for pilot in championship_standings %}
+					    <div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('{% if pilot.pilot.display == True %}{{ pilot.pilot.profile_image.url }}{% else %}/static/images/avatar.jpg{% endif %}');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	{{ pilot.pilot.first_name }} {{ pilot.pilot.last_name}}			                        	<span class="pull-right flag-icon {{ pilot.pilot.get_flag }}"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">COUNTRY: <span>{{ pilot.pilot.nationality.name }}</span></div>
+				                            {% if pilot.pilot.dob %}
+				                            <div class="driver-info-text">DATE OF BIRTH: <span>{{ pilot.pilot.dob|date:"d/m/Y"}}</span></div>
+				                            {% endif %}
+				                            {% if pilot.pilot.height %}
+				                            <div class="driver-info-text">HEIGHT: <span>{{pilot.pilot.height}} CM</span></div>
+				                            {% endif %}
+				                            {% if pilot.pilot.weight %}
+				                            <div class="driver-info-text">WEIGHT: <span>{{ pilot.pilot.weight }} KG</span></div>
+				                            {% endif %}
+				                            <div class="driver-info-text">BIO: <span style="text-align: justify;">{{ pilot.pilot.bio|truncatechars:500}}</span></div>
+				                            <div class="driver-info-text">LINKS: <span><a href="{{ pilot.pilot.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.pilot.instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.pilot.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.pilot.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>&nbsp;&nbsp;&nbsp;<a href="{{ pilot.pilot.website }}" target="_blank"><i class="fa fa-globe"></i></a></span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-trophy" style="{% if pilot.championship_position == 1 %}color: #D4AF37;{% endif %}{% if pilot.championship_position == 2 %}color: #C0C0C0;{% endif %}{% if pilot.championship_position == 3 %}color: #cd7f32;{% endif %}"></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<div class="driver-championship-text">POSITION: <span>{{ pilot.championship_position|ordinal }}</span></div>
+				                        	<div class="driver-championship-text">POINTS: <span>{% get_championship_points championship.id pilot.pilot.id %}</span></div>
+				                            <div class="driver-championship-text">CHAMPIONSHIPS: <span>{% get_championship_entered championship.id pilot.pilot.id %}</span></div>
+				                            <div class="driver-championship-text">BEST RESULT: <span>{% get_championship_best championship.id pilot.pilot.id %}</span></div>
+				                            <div class="driver-championship-text">PODIUMS: <span>{% get_championship_podiums championship.id pilot.pilot.id %}</span></div>
+				                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+						{% endfor %}
+							
+					</div>
+				</div>
+			</div>
+	</div>
+	{% endif %}
+	{% if championship_standings.all %}
+	<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>{{ championship.name }} standings</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="insidef1h2o-item">
+				<table class="table table-condensed table-standings">
+										<thead>
+											<tr>
+												<th class="std-pos" rowspan="2">POS</th>
+												<th class="std-flag" rowspan="2">DRIVER</th>
+												<th class="std-flag" rowspan="2">NAT</th>
+												<th class="std-flag" colspan="{{ championship.events.count|add:'1'}}">2018/2019 Asia Powerboat Championship</th>
+												
+											</tr>
+											<tr>
+												{% for event in championship.events.all %}
+													<th class="std-flag"><span class="flag-icon {{event.get_flag}}"></span></th>
+												{% endfor %}
+												<th class="std-laps">TOTAL</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for comp in championship_standings %}
+											{% if comp.championship_position %}
+											<tr>
+												<td class="std-pos"><span>{{ comp.championship_position }}</span></td>
+												<td class="std-flag" style="text-transform: uppercase;">{{ comp.pilot.first_name }} {{ comp.pilot.last_name }}</span></td>
+												<td class="std-flag"><span class="flag-icon {{comp.pilot.get_flag}}"></span></td>
+												{% for event in championship.events.all %}
+													<td class="std-laps">{% get_driver_event event.id comp.pilot.id %}</td>
+												{% endfor %}
+												<td class="std-points"><span>{% get_championship_points championship.id comp.pilot.id %}</span></td>
+											</tr>
+											{% endif %}
+											{% endfor %}
+											
+										</tbody>
+									</table>
+				</div>
+				
+		</div>
+	</div>
+</div>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,221 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% block title %} About {% endblock title %}
+
+{% block content %}
+<div class="container-fluid page-title">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="row">
+				<h4>
+					ABOUT US</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div> 
+<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>The Concept</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="media-list">
+					{% for event in events %}
+					<div class="media-item">
+							<a href="{% url 'content:championship' event.slug %}" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url({{ event.event_cover.url }});">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><small style="text-transform: uppercase;">{% if event.event_date %}{{ event.event_date|date:"F Y"}}{% else %}{{ event.event_proposed_date }}{% endif %}</small></div>
+										<div><strong style="text-transform: uppercase;">{{ event.event_title }}</strong></div>
+										<div style="text-transform: uppercase;">{% if event.event_date %}{% if event.event_past == true %}See the Results{% else %}Find Out More{% endif %}{% else %}Register Your Interest{% endif %}</div>
+									</div>
+								</div>
+							</a>
+					</div>
+					{% endfor %}							
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;"><span>OUR FLEET</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+				    <div class="home-teamslider-container">
+				    	{% for boat in boats %}
+					    <div class="home-driverslider-item">
+				                <div class="driver-item">
+				                	<div class="driver-photo" style="background-image:url('{{ boat.boat_image.url }}');min-height: 30em;">
+				                		
+				                	</div>
+				                    <div class="driver-name">
+				                        <h3>
+				                        	Boat Number: {{ boat.boat_number }}			                        	<span class="pull-right flag-icon flag-icon-gb"></span>&nbsp;<span class="pull-right flag-icon flag-icon-hk"></span>
+				                        </h3>
+				                        <div class="driver-info pull-left">
+				                            <div class="driver-info-text">MANUFACTURER: <span>Shakespeare Boats</span></div>
+				                            <div class="driver-info-text">YEAR OF MANUFACTURE: <span>2017</span></div>
+				                            <div class="driver-info-text">STEERING: <span>Hydraullic</span></div>
+				                            <div class="driver-info-text">HULL LENGTH: <span>4,285 mm</span></div>
+				                            <div class="driver-info-text">BEAM: <span>1,505 mm</span></div>
+				                            <div class="driver-info-text">HULL WEIGHT: <span>110 kg</span></div>
+				                            <div class="driver-info-text">ENGINE: <span>TOHATSU 50HP 2 Stroke MD50D2</span></div>
+				                            <div class="driver-info-text">RACE WEIGHT: <span>235 kg</span></div>
+				                        </div>
+				                        <div class="driver-icon pull-left">
+				                        	<i class="fa fa-ship" style=""></i>
+				                        </div>
+				                        <div class="driver-championship pull-left">
+				                        	<!--<div class="driver-championship-text">RACES: <span>{{ boat.number_of_races }}</span></div>-->
+				                        	<div class="driver-championship-text">RACED IN: <span>{% for event in boat.location %}<span class="flag-icon {{ event.get_flag }}"></span>{% if not forloop.last %}&nbsp;{% endif %}{% endfor %}</span></div>
+				                            <div class="driver-championship-text">PILOTS: <span>{% for pilot in boat.boat_pilots %}{{ pilot.entrant.first_name }} {{ pilot.entrant.last_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</span></div>		                            
+				                        </div>
+				                    </div>
+				                </div>
+						</div>
+						{% endfor %}
+							
+					</div>
+				</div>
+			</div>
+	</div>
+	<div id="home-video" class="container-fluid" style="background-image:url('/static/images/promo-video.jpg')">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="col-xs-12 home-vip-title">
+				<span>
+					<a id="video-box" href="javascript:void(0);" data-filename="2019_F1H2O_Season_Review" data-videotitle=" - Season End Highlights" data-slug="320--season-end-highlights" data-season="2019">
+						<i class="fa fa-youtube-play"></i> 					<div id="video-player-container" style="display:none"><div id="video-player"></div></div>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>CHAMPIONSHIP FORMAT</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="media-list">
+					{% for event in champ_events %}
+					<div class="media-item-training">
+							<a href="{% url 'content:championship' event.slug %}" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url({{ event.event_cover.url }});">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><small style="text-transform: uppercase;">{% if event.event_date %}{{ event.event_date|date:"F Y"}}{% else %}{{ event.event_proposed_date }}{% endif %}</small></div>
+										<div><strong style="text-transform: uppercase;">{{ event.event_title }}</strong></div>
+										<div style="text-transform: uppercase;">{% if event.event_date %}{% if event.event_past == true %}See the Results{% else %}Find Out More{% endif %}{% else %}Register Your Interest{% endif %}</div>
+									</div>
+								</div>
+							</a>
+					</div>
+					{% endfor %}							
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><span>TRAINING</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="media-list">
+					<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-1.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>EXMOUTH, UK</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>LEVELS: Novice - Advanced</small></div>
+										<div><small>CHIEF INSTRUCTOR: Guy Child</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-2.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>CHANGI, SG</strong><span class="pull-right flag-icon flag-icon-sg"></span></div>
+										<div><small>LEVELS: Novice</small></div>
+										<div><small>CHIEF INSTRUCTOR: Campbell Jenkins</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-3.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>HONG KONG</strong><span class="pull-right flag-icon flag-icon-hk"></span></div>
+										<div><small>LEVELS: Novice - Intermediate</small></div>
+										<div><small>CHIEF INSTRUCTOR: John Lindsay</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>UNION INTERNATIONALE MONONAUTIQUE</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				<div class="media-list">
+					{% for event in champ_events %}
+					<div class="media-item-training">
+							<a href="{% url 'content:championship' event.slug %}" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url({{ event.event_cover.url }});">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><small style="text-transform: uppercase;">{% if event.event_date %}{{ event.event_date|date:"F Y"}}{% else %}{{ event.event_proposed_date }}{% endif %}</small></div>
+										<div><strong style="text-transform: uppercase;">{{ event.event_title }}</strong></div>
+										<div style="text-transform: uppercase;">{% if event.event_date %}{% if event.event_past == true %}See the Results{% else %}Find Out More{% endif %}{% else %}Register Your Interest{% endif %}</div>
+									</div>
+								</div>
+							</a>
+					</div>
+					{% endfor %}							
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% block title %} Documentation {% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid page-title">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="row">
+				<h4>
+					DOCUMENTATION</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div> 
+<div id="home-teams" class="container-fluid">
+		<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="media-list">
+				{% for doc in docs %}
+					<div class="media-item-training">
+							<a href="{{ doc.document_link }}" class="gallery-box" target="_blank">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(https://apachampionship.com/apa/wp-content/uploads/2019/11/APA-Logo-600.png);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div style="text-transform: uppercase;"><strong>{{ doc.document_name }}</strong></div>
+										<div><small>VERSION: {{ doc.document_version }}</small></div>
+										<div><small>PUBLISHED: {{ doc.document_published|date:"M Y" }}</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+		
+{% endblock content %}

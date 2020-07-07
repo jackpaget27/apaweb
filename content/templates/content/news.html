@@ -1,0 +1,82 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% load instagram_client %}
+
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+	<div id="home-teams" class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><span>THE APA IN THE NEWS</span></div>
+	</div>
+	<div class="row">
+		
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="media-list">
+					<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-1.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>EXMOUTH, UK</strong><span class="pull-right flag-icon flag-icon-gb"></span></div>
+										<div><small>LEVELS: Novice - Advanced</small></div>
+										<div><small>CHIEF INSTRUCTOR: Guy Child</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-2.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>CHANGI, SG</strong><span class="pull-right flag-icon flag-icon-sg"></span></div>
+										<div><small>LEVELS: Novice</small></div>
+										<div><small>CHIEF INSTRUCTOR: Campbell Jenkins</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="media-item-training">
+							<a href="#" class="gallery-box">
+								<div class="media-content">
+									<div class="media-cover" style="background-image:url(static/images/training-3.jpg);">
+										<div>&nbsp;</div>
+									</div>
+									<div class="media-info">
+										<div><strong>HONG KONG</strong><span class="pull-right flag-icon flag-icon-hk"></span></div>
+										<div><small>LEVELS: Novice - Intermediate</small></div>
+										<div><small>CHIEF INSTRUCTOR: John Lindsay</small></div>
+									</div>
+								</div>
+							</a>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid event-gallery">
+	<div class="row">
+		<div class="row">
+				<div class="col-xs-12 home-vip-title text-center" style="color: rgb(255,223,0) !important;text-transform: uppercase;"><span>Our News Feeds</span></div>
+			</div>
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+
+			<div class="row">
+				{% instagram_recent_media_wall username="asiapowerboat" %}
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,178 @@
+{% extends "base_site.html" %}
+{% load humanize %}
+{% load template_tags %}
+{% block title %} Corporate Structure {% endblock title %}
+{% block stylesheets %}
+  {{ block.super }}
+  <style>
+    .insidef1h2o-item {
+	display: flex;
+	flex-wrap:wrap;
+	background-color:white;
+}
+
+.insidef1h2o-item-photo {
+	display: flex;
+	flex-wrap:wrap;
+	background:center center;
+	background-size:cover;
+	min-height:120px;
+}
+
+.insidef1h2o-item>.insidef1h2o-title {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:100px;
+	padding-bottom:80px;
+	width: 40%;
+	font-size:3.0em;
+	font-weight:700;
+	text-transform:uppercase;
+	text-align:right;
+	line-height:1.0em;
+}
+
+.insidef1h2o-item>.insidef1h2o-text {
+	padding:15px 100px 60px;
+	padding-top:110px;
+	width: 60%;
+	font-size:0.8em;
+}
+
+.insidef1h2o-item>.insidef1h2o-title2 {
+	padding:100px 100px 50px 100px;
+	font-size:1.4em;
+	font-weight:700;
+	text-transform:uppercase;
+}
+
+.insidef1h2o-item>.insidef1h2o-text2 {
+	font-size:0.8em;
+	padding:80px 80px 80px 80px;
+}
+
+.insidef1h2o-title-white {
+	padding:150px 150px 50px 150px;
+	font-size:1.6em;
+	font-weight:700;
+	text-transform:uppercase;
+	color:white;
+	text-align:center;
+	width:100%;
+}
+
+.insidef1h2o-text-white {
+	padding:0px 150px 150px 150px;
+	font-size:1.1em;
+	font-style:italic;
+	color:white;
+	text-align:center;
+}
+p a {
+	text-decoration:underline;
+}
+
+@media (max-width: 767px) {
+	.insidef1h2o-item>.insidef1h2o-title {
+		width: 100%;
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text {
+		width: 100%;
+		padding:15px;
+	}
+
+	.insidef1h2o-item>.insidef1h2o-title2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-item>.insidef1h2o-text2 {
+		padding:15px;
+	}
+	
+	.insidef1h2o-title-white {
+		padding:15px;
+	}
+	
+	.insidef1h2o-text-white {
+		padding:15px;
+	}
+}
+</style>
+{% endblock stylesheets %}
+{% block content %}
+
+<div class="container-fluid page-title">
+	<div class="row">
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="row">
+				<h4>
+					CORPORATE INFORMATION</span>
+				</h4>
+			</div>
+		</div>
+	</div>
+</div> 
+<div class="container-fluid event-gallery">
+	<div class="row">
+
+		<div class="col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="WhatisF1H2O" style="padding:0;">
+					
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">The Asia Powerboat Association</div>
+                        <div class="insidef1h2o-text">
+                        <p>The Asia Powerboat Association was established as a society in Hong Kong in January 2018. The Association was formed by Martin Lai working with a few other powerboat enthuiasts. The principle aim of the Association is to promote powerboat racing in Asia and to a younger generation. The APA owns and maintains a fleet of custom built Shakespeare raceboats. The Association form the parent Company for the boat manufacturer (Shakespeare Boats UK Ltd), the event promoter (Asia Powerboat Championship (UK) Ltd) and the management firm (Asia Powerboat Management (UK) Ltd). Each of the three companies is owned and operated by the APA with a view to assisting the Association in boat maintenance, event management and asset management.</p>
+                        <p>The APA has organised a number of events across Asia and is always looking for new venues to introduce our unique form of racing to a wider audience. As well as operating a Championship series the APA acts in its own right to provide training to novice powerboat racers and offer them an introduction to the sport.</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item-photo" style="background-image:url(/static/images/apa_about_1.jpg);">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">THE ASIA POWERBOAT CHAMPIONSHIP</div>
+                        <div class="insidef1h2o-text">
+                        <p>The Asia Powerboat Championship (APC) is operated by Asia Powerboat Championship (UK) Ltd which is a company registered in England and Wales having registration number 12501160. The registered office is 31-32 The Strand, Exmouth, EX8 2AQ. The APC manages and promotes events on behalf of the APA wet leasing the boats from Asia Powerboat Management (UK) Ltd. The APC sells advertising space and other exciting opportunties for potential investors or sponsors at the events.</p>
+                        <p>Most driver's will interact with the APA via the APC and its management team. The APC operate in accordance with the <a href="{% url 'content:documentation' %}">rules</a> of the APA. The APC is responsible for all aspects of a Championship event including racer and crowd safety.</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item-photo" style="background-image:url(/static/images/apa_about_2.jpg);">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">ASIA POWERBOAT MANAGEMENT</div>
+                        <div class="insidef1h2o-text">
+                        <p>The APA sold its fleet of racenboats to Asia Powerboat Management (UK) Ltd in 2020 and this company now manages all the assets and full-time/subcontracted staff on behalf of the APA. Asia Powerboat Management (UK) Ltd is a limited company registered in England and Wales having registration number 12553084. Asia Powerboat Management (UK) Ltd has a single customer Asia Powerboat Championship (UK) Ltd.</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item-photo" style="background-image:url(/static/images/circuit-racing.jpg);">
+                        <div class="insidef1h2o-title-white"></div>
+                        <div class="insidef1h2o-text-white">
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="insidef1h2o-item">
+                        <div class="insidef1h2o-title">SHAKESPEARE BOATS</div>
+                        <div class="insidef1h2o-text">
+                        <p>The APA operates a fleet of custom made raceboats that are produced by Shakespeare Boats UK Ltd. The boats are sold by Shakespeare Boats UK Ltd via their <a href="#">website</a>. Shakespeare Boats are responsible for the maintenance of the APA fleet but commercially operate separately from the APA.</p>
+                        </div>
+                    </div>
+					
+                    
+                    
+				</div>
+			</div>
+		
+	</div>
+</div>
+</div>
+		
+{% endblock content %}

@@ -118,9 +118,13 @@ p a {
 									<table class="table table-condensed table-standings">
 										<thead>
 											<tr>
-												<th class="std-pos">POS</th>
-												<th class="std-flag">DRIVER</th>
-												<th class="std-flag">NAT</th>
+												<th class="std-pos" rowspan="2">POS</th>
+												<th class="std-flag" rowspan="2">DRIVER</th>
+												<th class="std-flag" rowspan="2">NAT</th>
+												<th class="std-flag" colspan="{{ events.count|add:'1'}}">2018/2019 Asia Powerboat Championship</th>
+												
+											</tr>
+											<tr>
 												{% for event in events %}
 													<th class="std-flag"><span class="flag-icon {{event.get_flag}}"></span></th>
 												{% endfor %}
@@ -143,6 +147,13 @@ p a {
 										</tbody>
 									</table>
 
+									<!-- Full Results Button -->
+									<div id="home-teams" class="container-fluid" style="background-color: white;">
+										<div class="row">
+											<div class="col-xs-12 text-center home-vip-title" style="color: rgb(255,223,0) !important;"><a href="{% url 'content:championship_standings_full' 1 %}"><span>SEE FULL RESULTS</span></a></div>
+										</div>
+									</div>
+									<!-- End -->
                     </div>
                     
 				</div>
