@@ -39,7 +39,7 @@ pytz==2019.3
 redis==2.10.6
 six==1.13.0
 soupsieve==1.9.5
-Twisted==19.7.0
+Twisted==22.1.0
 txaio==18.8.1
 webencodings==0.5.1
 zope.interface==4.6.0
